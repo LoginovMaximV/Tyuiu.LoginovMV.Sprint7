@@ -24,28 +24,66 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 
         private void buttonAddCountry_LMV_Click(object sender, EventArgs e)
         {
+            
             string countryName = textBoxCountryName_LMV.Text;
             string capital = textBoxCapital_LMV.Text;
-            int area = Convert.ToInt32(textBoxSquare_LMV.Text);
-            int GDP = Convert.ToInt32(textBoxEconomic_LMV.Text);
-            int population = Convert.ToInt32(textBoxPopulation_LMV.Text);
+            double area;
+            if (!double.TryParse(textBoxSquare_LMV.Text, out area))
+            {
+                MessageBox.Show("Введите число в поле Площадь!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            double GDP;
+            if (!double.TryParse(textBoxEconomic_LMV.Text, out GDP))
+            {
+                MessageBox.Show("Введите число в поле ВВП!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            double population;
+            if (!double.TryParse(textBoxPopulation_LMV.Text, out population))
+            {
+                MessageBox.Show("Введите число в поле Население!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string nationality = textBoxNations_LMV.Text;
             string currency = textBoxCurrency_LMV.Text;
-            string data = $"{countryName};{capital};{area};{GDP};{population};{nationality};{currency}";
-            string fileName = $"{countryName}.csv";
-            string filePath = Path.Combine("Countries", fileName);
-            using (StreamWriter writer = new StreamWriter(filePath))
+            if (string.IsNullOrWhiteSpace(countryName) || string.IsNullOrWhiteSpace(capital) ||
+    string.IsNullOrWhiteSpace(textBoxSquare_LMV.Text) || string.IsNullOrWhiteSpace(textBoxEconomic_LMV.Text) ||
+    string.IsNullOrWhiteSpace(textBoxPopulation_LMV.Text) || string.IsNullOrWhiteSpace(nationality) ||
+    string.IsNullOrWhiteSpace(currency))
             {
-                writer.WriteLine(data);
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (File.Exists(filePath))
+            else 
             {
-                MessageBox.Show($"Файл с именем {countryName} был создан") ;
+                
+
+                string data = $"{countryName};{capital};{area};{GDP};{population};{nationality};{currency}";
+                string fileName = $"{countryName}.csv";
+                string filePath = Path.Combine("Countries", fileName);
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine(data);
+                }
+                textBoxCountryName_LMV.Clear();
+                textBoxCapital_LMV.Clear();
+                textBoxSquare_LMV.Clear();
+                textBoxEconomic_LMV.Clear();
+                textBoxPopulation_LMV.Clear();
+                textBoxNations_LMV.Clear();
+                textBoxCurrency_LMV.Clear();
+                if (File.Exists(filePath))
+                {
+                    MessageBox.Show($"Файл с именем {countryName} был создан", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Файл не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("Файл не найден","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+
         }
 
         private void buttonDeleteCountry_LMV_Click(object sender, EventArgs e)
@@ -55,11 +93,19 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             if (File.Exists(openFilePath))
             {
                 File.Delete(openFilePath);
-                MessageBox.Show("Файл удален");
+                MessageBox.Show("Файл удален","Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Файл не найден","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxSquare_LMV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != ',') && (e.KeyChar != 8))
+            {
+                e.Handled = true;
             }
         }
     }
