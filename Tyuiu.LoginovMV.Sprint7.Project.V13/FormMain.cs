@@ -146,5 +146,46 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 
 
         }
+
+        private void buttonEnterCountry_LMV_Click(object sender, EventArgs e)
+        {
+            string countryname = textBoxWriteCountry_LMV.Text;
+            string filename = $"{countryname}.csv";
+            string filePath = Path.Combine("Countries", filename);
+            if (File.Exists(filePath))
+            {
+                string[,] matrix = ds.GetMatrix(filePath);
+                int rows = matrix.GetLength(0);
+                int column = matrix.GetLength(1);
+                dataGridViewInfo_LMV.RowCount = rows;
+                dataGridViewInfo_LMV.ColumnCount = column;
+                for (int i = 0; i < column; i++)
+                {
+                    dataGridViewInfo_LMV.Columns[i].Width = 130;
+                }
+                dataGridViewInfo_LMV.RowHeadersWidth = 170;
+                dataGridViewInfo_LMV.Rows[0].HeaderCell.Value = "Название страны:";
+                dataGridViewInfo_LMV.Rows[1].HeaderCell.Value = "Столица:";
+                dataGridViewInfo_LMV.Rows[2].HeaderCell.Value = "Площадь в км^2:";
+                dataGridViewInfo_LMV.Rows[3].HeaderCell.Value = "ВВП в млрд.$:";
+                dataGridViewInfo_LMV.Rows[4].HeaderCell.Value = "Валюта:";
+                dataGridViewInfo_LMV.Rows[5].HeaderCell.Value = "Население:";
+                dataGridViewInfo_LMV.Rows[6].HeaderCell.Value = "Национальность:";
+                dataGridViewInfo_LMV.Rows[7].HeaderCell.Value = "Язык:";
+                dataGridViewInfo_LMV.Rows[8].HeaderCell.Value = "Континент:";
+                dataGridViewInfo_LMV.Rows[9].HeaderCell.Value = "Религия:";
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        dataGridViewInfo_LMV.Rows[i].Cells[j].Value = matrix[i, j];
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Файл {countryname} не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
