@@ -588,7 +588,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // buttonSearch_LMV
             // 
             this.buttonSearch_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonSearch_LMV.Image")));
-            this.buttonSearch_LMV.Location = new System.Drawing.Point(371, 31);
+            this.buttonSearch_LMV.Location = new System.Drawing.Point(305, 31);
             this.buttonSearch_LMV.Name = "buttonSearch_LMV";
             this.buttonSearch_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonSearch_LMV.TabIndex = 0;
@@ -635,11 +635,12 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // buttonFlag_LMV
             // 
             this.buttonFlag_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlag_LMV.Image")));
-            this.buttonFlag_LMV.Location = new System.Drawing.Point(305, 30);
+            this.buttonFlag_LMV.Location = new System.Drawing.Point(371, 31);
             this.buttonFlag_LMV.Name = "buttonFlag_LMV";
             this.buttonFlag_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonFlag_LMV.TabIndex = 3;
             this.buttonFlag_LMV.UseVisualStyleBackColor = true;
+            this.buttonFlag_LMV.Click += new System.EventHandler(this.buttonFlag_LMV_Click);
             // 
             // panelFlag_LMV
             // 
@@ -666,6 +667,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.pictureBoxFlag_LMV.Location = new System.Drawing.Point(3, 22);
             this.pictureBoxFlag_LMV.Name = "pictureBoxFlag_LMV";
             this.pictureBoxFlag_LMV.Size = new System.Drawing.Size(304, 185);
+            this.pictureBoxFlag_LMV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFlag_LMV.TabIndex = 0;
             this.pictureBoxFlag_LMV.TabStop = false;
             // 

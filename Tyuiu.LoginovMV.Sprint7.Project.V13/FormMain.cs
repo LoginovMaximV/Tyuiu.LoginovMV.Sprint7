@@ -116,6 +116,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
         {
             openFileDialogTask_LMV.ShowDialog();
             openFilePath = openFileDialogTask_LMV.FileName;
+            textBoxWriteCountry_LMV.Text = Path.GetFileNameWithoutExtension(openFileDialogTask_LMV.FileName);
             string[,] matrix = ds.GetMatrix(openFilePath);
             int rows = matrix.GetLength(0);
             int column = matrix.GetLength(1);
@@ -131,7 +132,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             dataGridViewInfo_LMV.Rows[2].HeaderCell.Value = "Площадь в тыс.км^2:";
             dataGridViewInfo_LMV.Rows[3].HeaderCell.Value = "ВВП в млрд.$:";
             dataGridViewInfo_LMV.Rows[4].HeaderCell.Value = "Валюта:";
-            dataGridViewInfo_LMV.Rows[5].HeaderCell.Value = "Население в тыс.людей:";
+            dataGridViewInfo_LMV.Rows[5].HeaderCell.Value = "Население :";
             dataGridViewInfo_LMV.Rows[6].HeaderCell.Value = "Национальность:";
             dataGridViewInfo_LMV.Rows[7].HeaderCell.Value = "Язык:";
             dataGridViewInfo_LMV.Rows[8].HeaderCell.Value = "Континент:";
@@ -185,6 +186,22 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             else
             {
                 MessageBox.Show($"Файл {countryname} не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonFlag_LMV_Click(object sender, EventArgs e)
+        {
+            string flag = textBoxWriteCountry_LMV.Text;
+            string filename = $"{flag}.jpg";
+            string filePath = Path.Combine("Flags", filename);
+            if (File.Exists(filePath))
+            {
+                string flagCountry = filePath;
+                pictureBoxFlag_LMV.ImageLocation = flagCountry;
+            }
+            else
+            {
+                MessageBox.Show($"Флаг {flag} не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
