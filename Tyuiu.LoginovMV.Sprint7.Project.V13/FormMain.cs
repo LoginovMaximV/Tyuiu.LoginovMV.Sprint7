@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Tyuiu.LoginovMV.Sprint7.Project.V13.Lib;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 {
     public partial class FormMain : Form
     {
+        private SqlConnection sqlConnection = null;
         public FormMain()
         {
             InitializeComponent();
@@ -62,6 +66,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             }
             else 
             {
+                
                 string data = $"{countryName};{capital};{area};{GDP};{currency};{population};{nationality};{language};{continent};{religion}";
                 string fileName = $"{countryName}.csv";
                 string filePath = Path.Combine("Countries", fileName);
@@ -224,8 +229,17 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 
         private void buttonLoadTab_LMV_Click(object sender, EventArgs e)
         {
-            
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(
+                "SELECT * FROM Countries", sqlConnection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewCountries_LMV.DataSource = dataSet.Tables[0];
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CountryList"].ConnectionString);
+            sqlConnection.Open();
+        }
     }
 }
