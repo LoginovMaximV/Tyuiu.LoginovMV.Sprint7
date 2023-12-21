@@ -22,6 +22,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
         }
         public string openFilePath;
         DataService ds = new DataService();
+        public string FolderContr = @"C:\Users\Валерий\source\repos\Tyuiu.LoginovMV.Sprint7\Tyuiu.LoginovMV.Sprint7.Project.V13\bin\Debug\Countries";
+
 
         private void buttonAddCountry_LMV_Click(object sender, EventArgs e)
         {
@@ -192,17 +194,38 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
         private void buttonFlag_LMV_Click(object sender, EventArgs e)
         {
             string flag = textBoxWriteCountry_LMV.Text;
-            string filename = $"{flag}.jpg";
-            string filePath = Path.Combine("Flags", filename);
-            if (File.Exists(filePath))
+            string flagfilename = $"{flag}.jpg";
+            string flagfilePath = Path.Combine("Flags", flagfilename);
+            if (File.Exists(flagfilePath))
             {
-                string flagCountry = filePath;
+                string flagCountry = flagfilePath;
                 pictureBoxFlag_LMV.ImageLocation = flagCountry;
             }
             else
             {
                 MessageBox.Show($"Флаг {flag} не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            string gerb = textBoxWriteCountry_LMV.Text;
+            string gerbfilename = $"{gerb}.jpg";
+            string gerbfilePath = Path.Combine("Gerb", gerbfilename);
+            
+            if (File.Exists(gerbfilePath))
+            {
+                string gerbCountry = gerbfilePath;
+                pictureBoxGerb_LMV.ImageLocation = gerbCountry;
+            }
+            else
+            {
+                MessageBox.Show($"Герб  не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        
+
+
+        private void buttonLoadTab_LMV_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
