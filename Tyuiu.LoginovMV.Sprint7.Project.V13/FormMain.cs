@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using Tyuiu.LoginovMV.Sprint7.Project.V13.Lib;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace Tyuiu.LoginovMV.Sprint7.Project.V13
@@ -238,8 +237,43 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseCDataSet.Countries' table. You can move, or remove it, as needed.
+            this.countriesTableAdapter.Fill(this.databaseCDataSet.Countries);
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CountryList"].ConnectionString);
             sqlConnection.Open();
+            comboBoxColumn_LMV.SelectedIndex = 0;
+        }
+
+        private void textBoxSearchColumn_LMV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrEmpty(textBoxSearchColumn_LMV.Text))
+                {
+                    countriesBindingSource.Filter = string.Empty;
+                }
+                else
+                {
+                    countriesBindingSource.Filter = string.Format("{0}='{1}'", comboBoxColumn_LMV.Text, textBoxSearchColumn_LMV.Text);
+                }
+            }
+        }
+
+        private void buttonRedaction_LMV_Click(object sender, EventArgs e)
+        {
+            openFileDialogTask_LMV.ShowDialog();
+            openFilePath = openFileDialogTask_LMV.FileName;
+            string[,] matrix = ds.GetMatrix(openFilePath);
+            textBoxCountryName_LMV.Text = matrix[0, 0];
+            textBoxCapital_LMV.Text = matrix[1, 0];
+            textBoxSquare_LMV.Text = matrix[2, 0];
+            textBoxEconomic_LMV.Text = matrix[3, 0];
+            textBoxCurrency_LMV.Text = matrix[4, 0];
+            textBoxPopulation_LMV.Text = matrix[5, 0];
+            textBoxNations_LMV.Text = matrix[6, 0];
+            textBoxLang_LMV.Text = matrix[7, 0];
+            textBoxContinent_LMV.Text = matrix[8, 0];
+            textBoxReligion_LMV.Text = matrix[9, 0];
         }
     }
 }
