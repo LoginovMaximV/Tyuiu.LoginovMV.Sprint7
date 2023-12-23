@@ -135,7 +135,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             dataGridViewInfo_LMV.RowHeadersWidth = 170;
             dataGridViewInfo_LMV.Rows[0].HeaderCell.Value = "Название страны:";
             dataGridViewInfo_LMV.Rows[1].HeaderCell.Value = "Столица:";
-            dataGridViewInfo_LMV.Rows[2].HeaderCell.Value = "Площадь в тыс.км^2:";
+            dataGridViewInfo_LMV.Rows[2].HeaderCell.Value = "Площадь в км^2:";
             dataGridViewInfo_LMV.Rows[3].HeaderCell.Value = "ВВП в млрд.$:";
             dataGridViewInfo_LMV.Rows[4].HeaderCell.Value = "Валюта:";
             dataGridViewInfo_LMV.Rows[5].HeaderCell.Value = "Население :";
@@ -181,6 +181,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
                 dataGridViewInfo_LMV.Rows[7].HeaderCell.Value = "Язык:";
                 dataGridViewInfo_LMV.Rows[8].HeaderCell.Value = "Континент:";
                 dataGridViewInfo_LMV.Rows[9].HeaderCell.Value = "Религия:";
+                
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < column; j++)
@@ -188,6 +189,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
                         dataGridViewInfo_LMV.Rows[i].Cells[j].Value = matrix[i, j];
                     }
                 }
+                
             }
             else
             {
@@ -274,6 +276,59 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             textBoxLang_LMV.Text = matrix[7, 0];
             textBoxContinent_LMV.Text = matrix[8, 0];
             textBoxReligion_LMV.Text = matrix[9, 0];
+        }
+
+        private void buttonGDP_LMV_Click(object sender, EventArgs e)
+        {
+            string countryname = textBoxWriteCountry_LMV.Text;
+            string filename = $"{countryname}.csv";
+            string filePath = Path.Combine("Countries", filename);
+            if (File.Exists(filePath))
+            {
+                string[,] matrix = ds.GetMatrix(filePath);
+                double GDP = Convert.ToDouble(matrix[3, 0])*Math.Pow(10,9);
+                double Population = Convert.ToDouble(matrix[5, 0]);
+                double res = Math.Round(ds.GDPperCapita(GDP, Population), 1);
+                textBoxGDP_LMV.Text = Convert.ToString(res);
+            }
+        }
+
+        private void buttonDensity_LMV_Click(object sender, EventArgs e)
+        {
+            string countryname = textBoxWriteCountry_LMV.Text;
+            string filename = $"{countryname}.csv";
+            string filePath = Path.Combine("Countries", filename);
+            if (File.Exists(filePath))
+            {
+                string[,] matrix = ds.GetMatrix(filePath);
+                double Area = Convert.ToDouble(matrix[2, 0]);
+                double Population = Convert.ToDouble(matrix[5, 0]);
+                double res = Math.Round(ds.GDPperCapita(Population,Area), 1);
+                textBoxDensity_LMV.Text = Convert.ToString(res);
+            }
+        }
+
+        private void comboBoxSelectColumn_LMV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateChart(comboBoxSelectColumn_LMV.SelectedItem.ToString());
+        }
+        private void UpdateChart(string columnName)
+        {
+            string query = $"SELECT CountryName, {columnName} FROM Countries";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
+
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            chartFunction_LMV.Series["Series1"].Points.Clear();
+            chartFunction_LMV.ChartAreas[0].AxisX.Interval = 1;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string countryName = row["CountryName"].ToString();
+                double columnValue = Convert.ToDouble(row[columnName]);
+
+                chartFunction_LMV.Series["Series1"].Points.AddXY(countryName, columnValue);
+            }
         }
     }
 }

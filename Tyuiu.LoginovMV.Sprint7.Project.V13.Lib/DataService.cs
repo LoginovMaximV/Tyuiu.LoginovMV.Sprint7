@@ -33,6 +33,12 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13.Lib
             
             return mas;
         }
+        public double GDPperCapita(double GDP,double Population)
+        {
+            double res = GDP / Population;
+            return res;
+        }
+        
     }
     
 

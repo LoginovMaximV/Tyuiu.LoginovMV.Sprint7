@@ -6401,25 +6401,61 @@
 
 Внутреннее имя: Tyuiu.LoginovMV.Sprint7.Project.V13</value>
   </data>
-  <data name="textBoxTask_LMV.Text" xml:space="preserve">
-    <value>ТЕХНИЧЕСКОЕ ЗАДАНИЕ:
-
-Разработать Desktop приложение на основе Windows Forms по предметной области. Все данные должны храниться в формате файла CSV (возможно / допустимо несколько файлов).
-
-
-В проекте реализовать следующий графический интерфейс (Front-end):
-
-Приложение должно иметь адаптивный интерфейс (соответствовать правилам и требованиям проектирования UI/UX дизайна для Windows Forms) и следующие элементы: главное меню, инструментальная панель с кнопками, подсказки к кнопкам и элементам управления, справочные данные по приложению (о программе), краткое руководство пользователя, сетка ввода-вывода данных / поля ввода-вывода данных, элементы для управления функционалом. Возможно несколько окон в приложении. Все окна должны иметь соответствующие надписи в заголовках.
-
-В проекте реализовать следующий функционал (Back-end):
-
-Ввод, редактирование, поиск, сортировка, фильтрация, сохранения в файл(ы), чтение из фала(лов) данных. Реализовать элементы статистики (количество, сумма, среднее, min, max и т.д.). График (гистограмма / функция / диаграмм). Использовать для функционала библиотеку классов и unit-тесты.
-
-ПРЕДМЕТНАЯ ОБЛАСТЬ: География
-
-·        возможные характеристики данных (можно добавить свои):
-
-·        название страны, столица, площадь территории, является ли страна развитой в экономическом отношении, количество населения, преобладающая национальность, примечание.</value>
+  <data name="buttonGDP_LMV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="buttonDensity_LMV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
   <data name="buttonFlag_LMV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6527,8 +6563,29 @@
         kgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="textBoxTask_LMV.Text" xml:space="preserve">
+    <value>Это краткое руководство пользователя:
+Данное приложение позволяет создать базу данных для стран, а также вывести информацию о стране или о странах.
+Вы можете переключаться между вкладками, в зависимости от ваших задач.
+
+1 - Добавить страну: Позволяет добавить страну в базу данных. Вы можете добавить, редактировать и удалить страну. Рекомендуется работать в свернутом окне.
+
+2 - О стране: Позволяет вывести информацию о стране в таблицу. Вы можете ввести название страны вручную или открыть файл. Вы можете загрузить флаг, герб страны. Вы можете посчитать ВВП на душу населения и Плотность населения на км^2. Рекомендуется работать в свернутом окне.
+
+3 - Сравнить страны: Позволяет вывести все страны в одну таблицу и сравнивать их. Вы можете найти по столбцу нужное вам значение. Вы можете сделать фильтрацию столбцов по возрастанию и убыванию. Рекомендуется работать в развернутом окне.
+
+4 - Графики: Позволяет вывести все значения о странах в графики. Вы можете выбрать столбец по которому будет построен график. Рекомендуется работать в развернутом окне.
+
+Вот и все!</value>
+  </data>
   <metadata name="countriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 64</value>
+  </metadata>
+  <metadata name="countriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 64</value>
+  </metadata>
+  <metadata name="databaseCDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1084, 16</value>
   </metadata>
   <metadata name="databaseCDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1084, 16</value>
