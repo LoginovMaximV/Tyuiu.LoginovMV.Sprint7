@@ -31,9 +31,9 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openFileDialogTask_LMV = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogTask_LMV = new System.Windows.Forms.SaveFileDialog();
             this.toolTipButton_LMV = new System.Windows.Forms.ToolTip(this.components);
@@ -88,6 +88,13 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.dataGridViewInfo_LMV = new System.Windows.Forms.DataGridView();
             this.panelTop_LMV = new System.Windows.Forms.Panel();
             this.groupBoxMenu_LMV = new System.Windows.Forms.GroupBox();
+            this.groupBoxCalculate_LMV = new System.Windows.Forms.GroupBox();
+            this.labelDensity_LMV = new System.Windows.Forms.Label();
+            this.labelGDPPer_LMV = new System.Windows.Forms.Label();
+            this.buttonGDP_LMV = new System.Windows.Forms.Button();
+            this.buttonDensity_LMV = new System.Windows.Forms.Button();
+            this.textBoxDensity_LMV = new System.Windows.Forms.TextBox();
+            this.textBoxGDP_LMV = new System.Windows.Forms.TextBox();
             this.buttonFlag_LMV = new System.Windows.Forms.Button();
             this.buttonEnterCountry_LMV = new System.Windows.Forms.Button();
             this.groupBoxSearch_LMV = new System.Windows.Forms.GroupBox();
@@ -114,21 +121,14 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.textBoxSearchColumn_LMV = new System.Windows.Forms.TextBox();
             this.comboBoxColumn_LMV = new System.Windows.Forms.ComboBox();
             this.buttonLoadTab_LMV = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.countriesTableAdapter = new Tyuiu.LoginovMV.Sprint7.Project.V13.DatabaseCDataSetTableAdapters.CountriesTableAdapter();
             this.tabPageFunction_LMV = new System.Windows.Forms.TabPage();
             this.panelGrafic_LMV = new System.Windows.Forms.Panel();
-            this.groupBoxFunction_LMV = new System.Windows.Forms.GroupBox();
             this.chartFunction_LMV = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.comboBoxSelectColumn_LMV = new System.Windows.Forms.ComboBox();
+            this.groupBoxFunction_LMV = new System.Windows.Forms.GroupBox();
             this.labelSelectColumn_LMV = new System.Windows.Forms.Label();
-            this.groupBoxCalculate_LMV = new System.Windows.Forms.GroupBox();
-            this.textBoxGDP_LMV = new System.Windows.Forms.TextBox();
-            this.textBoxDensity_LMV = new System.Windows.Forms.TextBox();
-            this.buttonDensity_LMV = new System.Windows.Forms.Button();
-            this.buttonGDP_LMV = new System.Windows.Forms.Button();
-            this.labelGDPPer_LMV = new System.Windows.Forms.Label();
-            this.labelDensity_LMV = new System.Windows.Forms.Label();
+            this.comboBoxSelectColumn_LMV = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.countriesTableAdapter = new Tyuiu.LoginovMV.Sprint7.Project.V13.DatabaseCDataSetTableAdapters.CountriesTableAdapter();
             this.groupBoxPopulation_LMV.SuspendLayout();
             this.groupBoxEconomic_LMV.SuspendLayout();
             this.groupBoxSquare_LMV.SuspendLayout();
@@ -152,6 +152,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInfo_LMV)).BeginInit();
             this.panelTop_LMV.SuspendLayout();
             this.groupBoxMenu_LMV.SuspendLayout();
+            this.groupBoxCalculate_LMV.SuspendLayout();
             this.groupBoxSearch_LMV.SuspendLayout();
             this.tabPageCountries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCountries_LMV)).BeginInit();
@@ -160,9 +161,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxTables_LMV.SuspendLayout();
             this.tabPageFunction_LMV.SuspendLayout();
             this.panelGrafic_LMV.SuspendLayout();
-            this.groupBoxFunction_LMV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartFunction_LMV)).BeginInit();
-            this.groupBoxCalculate_LMV.SuspendLayout();
+            this.groupBoxFunction_LMV.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialogTask_LMV
@@ -171,6 +171,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             // toolTipButton_LMV
             // 
+            this.toolTipButton_LMV.IsBalloon = true;
             this.toolTipButton_LMV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipButton_LMV.ToolTipTitle = "Подсказка";
             // 
@@ -179,20 +180,22 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonDeleteCountry_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
             this.buttonDeleteCountry_LMV.Location = new System.Drawing.Point(588, 523);
             this.buttonDeleteCountry_LMV.Name = "buttonDeleteCountry_LMV";
-            this.buttonDeleteCountry_LMV.Size = new System.Drawing.Size(145, 68);
+            this.buttonDeleteCountry_LMV.Size = new System.Drawing.Size(146, 68);
             this.buttonDeleteCountry_LMV.TabIndex = 20;
             this.buttonDeleteCountry_LMV.Text = "Удалить страну";
+            this.toolTipButton_LMV.SetToolTip(this.buttonDeleteCountry_LMV, "Удаляет выбранный csv файл.");
             this.buttonDeleteCountry_LMV.UseVisualStyleBackColor = true;
             this.buttonDeleteCountry_LMV.Click += new System.EventHandler(this.buttonDeleteCountry_LMV_Click);
             // 
             // buttonAddCountry_LMV
             // 
             this.buttonAddCountry_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
-            this.buttonAddCountry_LMV.Location = new System.Drawing.Point(173, 523);
+            this.buttonAddCountry_LMV.Location = new System.Drawing.Point(172, 523);
             this.buttonAddCountry_LMV.Name = "buttonAddCountry_LMV";
-            this.buttonAddCountry_LMV.Size = new System.Drawing.Size(145, 68);
+            this.buttonAddCountry_LMV.Size = new System.Drawing.Size(146, 68);
             this.buttonAddCountry_LMV.TabIndex = 19;
             this.buttonAddCountry_LMV.Text = "Добавить страну";
+            this.toolTipButton_LMV.SetToolTip(this.buttonAddCountry_LMV, "Создает csv файл и сохраняет введеные данные.");
             this.buttonAddCountry_LMV.UseVisualStyleBackColor = true;
             this.buttonAddCountry_LMV.Click += new System.EventHandler(this.buttonAddCountry_LMV_Click);
             // 
@@ -212,7 +215,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             // textBoxContinent_LMV
             // 
-            this.textBoxContinent_LMV.Location = new System.Drawing.Point(170, 44);
+            this.textBoxContinent_LMV.Location = new System.Drawing.Point(170, 45);
             this.textBoxContinent_LMV.Name = "textBoxContinent_LMV";
             this.textBoxContinent_LMV.Size = new System.Drawing.Size(145, 26);
             this.textBoxContinent_LMV.TabIndex = 1;
@@ -221,7 +224,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             this.labelContinent_LMV.AutoSize = true;
             this.labelContinent_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
-            this.labelContinent_LMV.Location = new System.Drawing.Point(6, 44);
+            this.labelContinent_LMV.Location = new System.Drawing.Point(6, 45);
             this.labelContinent_LMV.Name = "labelContinent_LMV";
             this.labelContinent_LMV.Size = new System.Drawing.Size(99, 19);
             this.labelContinent_LMV.TabIndex = 0;
@@ -229,7 +232,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             // textBoxReligion_LMV
             // 
-            this.textBoxReligion_LMV.Location = new System.Drawing.Point(585, 44);
+            this.textBoxReligion_LMV.Location = new System.Drawing.Point(585, 45);
             this.textBoxReligion_LMV.Name = "textBoxReligion_LMV";
             this.textBoxReligion_LMV.Size = new System.Drawing.Size(145, 26);
             this.textBoxReligion_LMV.TabIndex = 2;
@@ -238,7 +241,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             this.labelReligion_LMV.AutoSize = true;
             this.labelReligion_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
-            this.labelReligion_LMV.Location = new System.Drawing.Point(466, 44);
+            this.labelReligion_LMV.Location = new System.Drawing.Point(466, 45);
             this.labelReligion_LMV.Name = "labelReligion_LMV";
             this.labelReligion_LMV.Size = new System.Drawing.Size(75, 19);
             this.labelReligion_LMV.TabIndex = 3;
@@ -466,7 +469,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 644);
+            this.splitter1.Size = new System.Drawing.Size(3, 645);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -476,7 +479,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.panelFull_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFull_LMV.Location = new System.Drawing.Point(3, 0);
             this.panelFull_LMV.Name = "panelFull_LMV";
-            this.panelFull_LMV.Size = new System.Drawing.Size(875, 644);
+            this.panelFull_LMV.Size = new System.Drawing.Size(875, 645);
             this.panelFull_LMV.TabIndex = 3;
             // 
             // tabControlMenu_LMV
@@ -490,7 +493,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.tabControlMenu_LMV.Location = new System.Drawing.Point(0, 0);
             this.tabControlMenu_LMV.Name = "tabControlMenu_LMV";
             this.tabControlMenu_LMV.SelectedIndex = 0;
-            this.tabControlMenu_LMV.Size = new System.Drawing.Size(875, 644);
+            this.tabControlMenu_LMV.Size = new System.Drawing.Size(875, 645);
             this.tabControlMenu_LMV.TabIndex = 0;
             // 
             // tabPageInfo
@@ -499,8 +502,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.tabPageInfo.Controls.Add(this.groupBoxWork_LMV);
             this.tabPageInfo.Location = new System.Drawing.Point(4, 29);
             this.tabPageInfo.Name = "tabPageInfo";
-            this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInfo.Size = new System.Drawing.Size(867, 611);
+            this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageInfo.Size = new System.Drawing.Size(867, 612);
             this.tabPageInfo.TabIndex = 0;
             this.tabPageInfo.Text = "Руководство пользователя";
             this.tabPageInfo.UseVisualStyleBackColor = true;
@@ -512,7 +515,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxAvatar_LMV.Controls.Add(this.labelInfo_LMV);
             this.groupBoxAvatar_LMV.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBoxAvatar_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxAvatar_LMV.Location = new System.Drawing.Point(3, 388);
+            this.groupBoxAvatar_LMV.Location = new System.Drawing.Point(3, 389);
             this.groupBoxAvatar_LMV.Name = "groupBoxAvatar_LMV";
             this.groupBoxAvatar_LMV.Size = new System.Drawing.Size(861, 220);
             this.groupBoxAvatar_LMV.TabIndex = 3;
@@ -544,7 +547,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxWork_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxWork_LMV.Location = new System.Drawing.Point(3, 3);
             this.groupBoxWork_LMV.Name = "groupBoxWork_LMV";
-            this.groupBoxWork_LMV.Size = new System.Drawing.Size(861, 605);
+            this.groupBoxWork_LMV.Size = new System.Drawing.Size(861, 606);
             this.groupBoxWork_LMV.TabIndex = 2;
             this.groupBoxWork_LMV.TabStop = false;
             this.groupBoxWork_LMV.Text = "Вариант 13";
@@ -557,7 +560,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.textBoxTask_LMV.Multiline = true;
             this.textBoxTask_LMV.Name = "textBoxTask_LMV";
             this.textBoxTask_LMV.ReadOnly = true;
-            this.textBoxTask_LMV.Size = new System.Drawing.Size(855, 580);
+            this.textBoxTask_LMV.Size = new System.Drawing.Size(855, 581);
             this.textBoxTask_LMV.TabIndex = 0;
             this.textBoxTask_LMV.Text = resources.GetString("textBoxTask_LMV.Text");
             // 
@@ -574,8 +577,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.tabPageAddCountry.Controls.Add(this.buttonAddCountry_LMV);
             this.tabPageAddCountry.Location = new System.Drawing.Point(4, 29);
             this.tabPageAddCountry.Name = "tabPageAddCountry";
-            this.tabPageAddCountry.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAddCountry.Size = new System.Drawing.Size(867, 611);
+            this.tabPageAddCountry.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageAddCountry.Size = new System.Drawing.Size(867, 612);
             this.tabPageAddCountry.TabIndex = 3;
             this.tabPageAddCountry.Text = "Добавить страну";
             // 
@@ -584,9 +587,10 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonRedaction_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRedaction_LMV.Location = new System.Drawing.Point(384, 523);
             this.buttonRedaction_LMV.Name = "buttonRedaction_LMV";
-            this.buttonRedaction_LMV.Size = new System.Drawing.Size(145, 68);
+            this.buttonRedaction_LMV.Size = new System.Drawing.Size(146, 68);
             this.buttonRedaction_LMV.TabIndex = 21;
             this.buttonRedaction_LMV.Text = "Редактировать страну";
+            this.toolTipButton_LMV.SetToolTip(this.buttonRedaction_LMV, "Загружает выбранный csv файл и выводит значения,\r\nпозволяя редактировать данные.");
             this.buttonRedaction_LMV.UseVisualStyleBackColor = true;
             this.buttonRedaction_LMV.Click += new System.EventHandler(this.buttonRedaction_LMV_Click);
             // 
@@ -598,8 +602,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.tabPageCountry.Controls.Add(this.panelTop_LMV);
             this.tabPageCountry.Location = new System.Drawing.Point(4, 29);
             this.tabPageCountry.Name = "tabPageCountry";
-            this.tabPageCountry.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCountry.Size = new System.Drawing.Size(867, 611);
+            this.tabPageCountry.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageCountry.Size = new System.Drawing.Size(867, 612);
             this.tabPageCountry.TabIndex = 1;
             this.tabPageCountry.Text = "О стране";
             this.tabPageCountry.UseVisualStyleBackColor = true;
@@ -609,9 +613,9 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxGerb_LMV.BackColor = System.Drawing.Color.AliceBlue;
             this.groupBoxGerb_LMV.Controls.Add(this.pictureBoxGerb_LMV);
             this.groupBoxGerb_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
-            this.groupBoxGerb_LMV.Location = new System.Drawing.Point(486, 341);
+            this.groupBoxGerb_LMV.Location = new System.Drawing.Point(486, 342);
             this.groupBoxGerb_LMV.Name = "groupBoxGerb_LMV";
-            this.groupBoxGerb_LMV.Size = new System.Drawing.Size(373, 264);
+            this.groupBoxGerb_LMV.Size = new System.Drawing.Size(374, 265);
             this.groupBoxGerb_LMV.TabIndex = 3;
             this.groupBoxGerb_LMV.TabStop = false;
             this.groupBoxGerb_LMV.Text = "Герб:";
@@ -621,7 +625,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.pictureBoxGerb_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxGerb_LMV.Location = new System.Drawing.Point(3, 23);
             this.pictureBoxGerb_LMV.Name = "pictureBoxGerb_LMV";
-            this.pictureBoxGerb_LMV.Size = new System.Drawing.Size(367, 238);
+            this.pictureBoxGerb_LMV.Size = new System.Drawing.Size(368, 239);
             this.pictureBoxGerb_LMV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxGerb_LMV.TabIndex = 0;
             this.pictureBoxGerb_LMV.TabStop = false;
@@ -631,7 +635,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.panelFlag_LMV.Controls.Add(this.groupBoxFlag_LMV);
             this.panelFlag_LMV.Location = new System.Drawing.Point(483, 125);
             this.panelFlag_LMV.Name = "panelFlag_LMV";
-            this.panelFlag_LMV.Size = new System.Drawing.Size(378, 210);
+            this.panelFlag_LMV.Size = new System.Drawing.Size(378, 209);
             this.panelFlag_LMV.TabIndex = 2;
             // 
             // groupBoxFlag_LMV
@@ -642,7 +646,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxFlag_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
             this.groupBoxFlag_LMV.Location = new System.Drawing.Point(0, 0);
             this.groupBoxFlag_LMV.Name = "groupBoxFlag_LMV";
-            this.groupBoxFlag_LMV.Size = new System.Drawing.Size(378, 210);
+            this.groupBoxFlag_LMV.Size = new System.Drawing.Size(378, 209);
             this.groupBoxFlag_LMV.TabIndex = 0;
             this.groupBoxFlag_LMV.TabStop = false;
             this.groupBoxFlag_LMV.Text = "Флаг:";
@@ -652,7 +656,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.pictureBoxFlag_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxFlag_LMV.Location = new System.Drawing.Point(3, 23);
             this.pictureBoxFlag_LMV.Name = "pictureBoxFlag_LMV";
-            this.pictureBoxFlag_LMV.Size = new System.Drawing.Size(372, 184);
+            this.pictureBoxFlag_LMV.Size = new System.Drawing.Size(372, 183);
             this.pictureBoxFlag_LMV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFlag_LMV.TabIndex = 0;
             this.pictureBoxFlag_LMV.TabStop = false;
@@ -682,11 +686,11 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             this.dataGridViewInfo_LMV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInfo_LMV.ColumnHeadersVisible = false;
-            this.dataGridViewInfo_LMV.Location = new System.Drawing.Point(7, 35);
+            this.dataGridViewInfo_LMV.Location = new System.Drawing.Point(8, 35);
             this.dataGridViewInfo_LMV.Name = "dataGridViewInfo_LMV";
             this.dataGridViewInfo_LMV.RowHeadersWidth = 62;
             this.dataGridViewInfo_LMV.RowTemplate.Height = 28;
-            this.dataGridViewInfo_LMV.Size = new System.Drawing.Size(455, 436);
+            this.dataGridViewInfo_LMV.Size = new System.Drawing.Size(454, 435);
             this.dataGridViewInfo_LMV.TabIndex = 0;
             // 
             // panelTop_LMV
@@ -695,7 +699,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.panelTop_LMV.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop_LMV.Location = new System.Drawing.Point(3, 3);
             this.panelTop_LMV.Name = "panelTop_LMV";
-            this.panelTop_LMV.Size = new System.Drawing.Size(861, 116);
+            this.panelTop_LMV.Size = new System.Drawing.Size(861, 115);
             this.panelTop_LMV.TabIndex = 0;
             // 
             // groupBoxMenu_LMV
@@ -710,10 +714,81 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxMenu_LMV.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold);
             this.groupBoxMenu_LMV.Location = new System.Drawing.Point(0, 0);
             this.groupBoxMenu_LMV.Name = "groupBoxMenu_LMV";
-            this.groupBoxMenu_LMV.Size = new System.Drawing.Size(861, 116);
+            this.groupBoxMenu_LMV.Size = new System.Drawing.Size(861, 115);
             this.groupBoxMenu_LMV.TabIndex = 0;
             this.groupBoxMenu_LMV.TabStop = false;
             this.groupBoxMenu_LMV.Text = "Меню:";
+            // 
+            // groupBoxCalculate_LMV
+            // 
+            this.groupBoxCalculate_LMV.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBoxCalculate_LMV.Controls.Add(this.labelDensity_LMV);
+            this.groupBoxCalculate_LMV.Controls.Add(this.labelGDPPer_LMV);
+            this.groupBoxCalculate_LMV.Controls.Add(this.buttonGDP_LMV);
+            this.groupBoxCalculate_LMV.Controls.Add(this.buttonDensity_LMV);
+            this.groupBoxCalculate_LMV.Controls.Add(this.textBoxDensity_LMV);
+            this.groupBoxCalculate_LMV.Controls.Add(this.textBoxGDP_LMV);
+            this.groupBoxCalculate_LMV.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBoxCalculate_LMV.Location = new System.Drawing.Point(480, 23);
+            this.groupBoxCalculate_LMV.Name = "groupBoxCalculate_LMV";
+            this.groupBoxCalculate_LMV.Size = new System.Drawing.Size(378, 89);
+            this.groupBoxCalculate_LMV.TabIndex = 4;
+            this.groupBoxCalculate_LMV.TabStop = false;
+            this.groupBoxCalculate_LMV.Text = "Посчитать:";
+            // 
+            // labelDensity_LMV
+            // 
+            this.labelDensity_LMV.AutoSize = true;
+            this.labelDensity_LMV.Location = new System.Drawing.Point(148, 23);
+            this.labelDensity_LMV.Name = "labelDensity_LMV";
+            this.labelDensity_LMV.Size = new System.Drawing.Size(97, 19);
+            this.labelDensity_LMV.TabIndex = 5;
+            this.labelDensity_LMV.Text = "Плотность:";
+            // 
+            // labelGDPPer_LMV
+            // 
+            this.labelGDPPer_LMV.AutoSize = true;
+            this.labelGDPPer_LMV.Location = new System.Drawing.Point(6, 23);
+            this.labelGDPPer_LMV.Name = "labelGDPPer_LMV";
+            this.labelGDPPer_LMV.Size = new System.Drawing.Size(113, 19);
+            this.labelGDPPer_LMV.TabIndex = 4;
+            this.labelGDPPer_LMV.Text = "ВВП на душу:";
+            // 
+            // buttonGDP_LMV
+            // 
+            this.buttonGDP_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonGDP_LMV.Image")));
+            this.buttonGDP_LMV.Location = new System.Drawing.Point(250, 25);
+            this.buttonGDP_LMV.Name = "buttonGDP_LMV";
+            this.buttonGDP_LMV.Size = new System.Drawing.Size(60, 60);
+            this.buttonGDP_LMV.TabIndex = 3;
+            this.toolTipButton_LMV.SetToolTip(this.buttonGDP_LMV, "Считает ВВП на душу населения.");
+            this.buttonGDP_LMV.UseVisualStyleBackColor = true;
+            this.buttonGDP_LMV.Click += new System.EventHandler(this.buttonGDP_LMV_Click);
+            // 
+            // buttonDensity_LMV
+            // 
+            this.buttonDensity_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonDensity_LMV.Image")));
+            this.buttonDensity_LMV.Location = new System.Drawing.Point(316, 25);
+            this.buttonDensity_LMV.Name = "buttonDensity_LMV";
+            this.buttonDensity_LMV.Size = new System.Drawing.Size(60, 60);
+            this.buttonDensity_LMV.TabIndex = 2;
+            this.toolTipButton_LMV.SetToolTip(this.buttonDensity_LMV, "Считает плотность населения на км^2.");
+            this.buttonDensity_LMV.UseVisualStyleBackColor = true;
+            this.buttonDensity_LMV.Click += new System.EventHandler(this.buttonDensity_LMV_Click);
+            // 
+            // textBoxDensity_LMV
+            // 
+            this.textBoxDensity_LMV.Location = new System.Drawing.Point(146, 45);
+            this.textBoxDensity_LMV.Name = "textBoxDensity_LMV";
+            this.textBoxDensity_LMV.Size = new System.Drawing.Size(100, 27);
+            this.textBoxDensity_LMV.TabIndex = 1;
+            // 
+            // textBoxGDP_LMV
+            // 
+            this.textBoxGDP_LMV.Location = new System.Drawing.Point(6, 45);
+            this.textBoxGDP_LMV.Name = "textBoxGDP_LMV";
+            this.textBoxGDP_LMV.Size = new System.Drawing.Size(114, 27);
+            this.textBoxGDP_LMV.TabIndex = 0;
             // 
             // buttonFlag_LMV
             // 
@@ -722,6 +797,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonFlag_LMV.Name = "buttonFlag_LMV";
             this.buttonFlag_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonFlag_LMV.TabIndex = 3;
+            this.toolTipButton_LMV.SetToolTip(this.buttonFlag_LMV, "Загружает флаг и герб для данной страны.");
             this.buttonFlag_LMV.UseVisualStyleBackColor = true;
             this.buttonFlag_LMV.Click += new System.EventHandler(this.buttonFlag_LMV_Click);
             // 
@@ -732,6 +808,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonEnterCountry_LMV.Name = "buttonEnterCountry_LMV";
             this.buttonEnterCountry_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonEnterCountry_LMV.TabIndex = 2;
+            this.toolTipButton_LMV.SetToolTip(this.buttonEnterCountry_LMV, "Ищет файл по имении выводит информацию о стране.");
             this.buttonEnterCountry_LMV.UseVisualStyleBackColor = true;
             this.buttonEnterCountry_LMV.Click += new System.EventHandler(this.buttonEnterCountry_LMV_Click);
             // 
@@ -742,16 +819,16 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxSearch_LMV.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxSearch_LMV.Location = new System.Drawing.Point(3, 23);
             this.groupBoxSearch_LMV.Name = "groupBoxSearch_LMV";
-            this.groupBoxSearch_LMV.Size = new System.Drawing.Size(273, 90);
+            this.groupBoxSearch_LMV.Size = new System.Drawing.Size(273, 89);
             this.groupBoxSearch_LMV.TabIndex = 1;
             this.groupBoxSearch_LMV.TabStop = false;
             this.groupBoxSearch_LMV.Text = "Введите название страны:";
             // 
             // textBoxWriteCountry_LMV
             // 
-            this.textBoxWriteCountry_LMV.Location = new System.Drawing.Point(3, 41);
+            this.textBoxWriteCountry_LMV.Location = new System.Drawing.Point(3, 42);
             this.textBoxWriteCountry_LMV.Name = "textBoxWriteCountry_LMV";
-            this.textBoxWriteCountry_LMV.Size = new System.Drawing.Size(225, 27);
+            this.textBoxWriteCountry_LMV.Size = new System.Drawing.Size(224, 27);
             this.textBoxWriteCountry_LMV.TabIndex = 0;
             // 
             // buttonSearch_LMV
@@ -761,6 +838,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonSearch_LMV.Name = "buttonSearch_LMV";
             this.buttonSearch_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonSearch_LMV.TabIndex = 0;
+            this.toolTipButton_LMV.SetToolTip(this.buttonSearch_LMV, "Выводит информацию о стране.");
             this.buttonSearch_LMV.UseVisualStyleBackColor = true;
             this.buttonSearch_LMV.Click += new System.EventHandler(this.buttonSearch_LMV_Click);
             // 
@@ -770,7 +848,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.tabPageCountries.Controls.Add(this.groupBoxTables_LMV);
             this.tabPageCountries.Location = new System.Drawing.Point(4, 29);
             this.tabPageCountries.Name = "tabPageCountries";
-            this.tabPageCountries.Size = new System.Drawing.Size(867, 611);
+            this.tabPageCountries.Size = new System.Drawing.Size(867, 612);
             this.tabPageCountries.TabIndex = 2;
             this.tabPageCountries.Text = "Сравнить страны";
             this.tabPageCountries.UseVisualStyleBackColor = true;
@@ -802,7 +880,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.dataGridViewCountries_LMV.RowHeadersWidth = 62;
             this.dataGridViewCountries_LMV.RowTemplate.Height = 28;
             this.dataGridViewCountries_LMV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCountries_LMV.Size = new System.Drawing.Size(867, 494);
+            this.dataGridViewCountries_LMV.Size = new System.Drawing.Size(867, 495);
             this.dataGridViewCountries_LMV.TabIndex = 3;
             // 
             // idDataGridViewTextBoxColumn
@@ -922,7 +1000,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // labelSearch_LMV
             // 
             this.labelSearch_LMV.AutoSize = true;
-            this.labelSearch_LMV.Location = new System.Drawing.Point(263, 26);
+            this.labelSearch_LMV.Location = new System.Drawing.Point(262, 26);
             this.labelSearch_LMV.Name = "labelSearch_LMV";
             this.labelSearch_LMV.Size = new System.Drawing.Size(63, 19);
             this.labelSearch_LMV.TabIndex = 5;
@@ -939,9 +1017,9 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             // 
             // textBoxSearchColumn_LMV
             // 
-            this.textBoxSearchColumn_LMV.Location = new System.Drawing.Point(267, 59);
+            this.textBoxSearchColumn_LMV.Location = new System.Drawing.Point(267, 58);
             this.textBoxSearchColumn_LMV.Name = "textBoxSearchColumn_LMV";
-            this.textBoxSearchColumn_LMV.Size = new System.Drawing.Size(143, 27);
+            this.textBoxSearchColumn_LMV.Size = new System.Drawing.Size(144, 27);
             this.textBoxSearchColumn_LMV.TabIndex = 3;
             this.textBoxSearchColumn_LMV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchColumn_LMV_KeyDown);
             // 
@@ -956,9 +1034,9 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             "Language",
             "Continent",
             "Religion"});
-            this.comboBoxColumn_LMV.Location = new System.Drawing.Point(85, 59);
+            this.comboBoxColumn_LMV.Location = new System.Drawing.Point(86, 58);
             this.comboBoxColumn_LMV.Name = "comboBoxColumn_LMV";
-            this.comboBoxColumn_LMV.Size = new System.Drawing.Size(147, 27);
+            this.comboBoxColumn_LMV.Size = new System.Drawing.Size(146, 27);
             this.comboBoxColumn_LMV.TabIndex = 2;
             // 
             // buttonLoadTab_LMV
@@ -968,20 +1046,17 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.buttonLoadTab_LMV.Name = "buttonLoadTab_LMV";
             this.buttonLoadTab_LMV.Size = new System.Drawing.Size(60, 60);
             this.buttonLoadTab_LMV.TabIndex = 1;
+            this.toolTipButton_LMV.SetToolTip(this.buttonLoadTab_LMV, "Обнуляет любой фильтр и поиск.");
             this.buttonLoadTab_LMV.UseVisualStyleBackColor = true;
             this.buttonLoadTab_LMV.Click += new System.EventHandler(this.buttonLoadTab_LMV_Click);
-            // 
-            // countriesTableAdapter
-            // 
-            this.countriesTableAdapter.ClearBeforeFill = true;
             // 
             // tabPageFunction_LMV
             // 
             this.tabPageFunction_LMV.Controls.Add(this.panelGrafic_LMV);
             this.tabPageFunction_LMV.Location = new System.Drawing.Point(4, 29);
             this.tabPageFunction_LMV.Name = "tabPageFunction_LMV";
-            this.tabPageFunction_LMV.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFunction_LMV.Size = new System.Drawing.Size(867, 611);
+            this.tabPageFunction_LMV.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFunction_LMV.Size = new System.Drawing.Size(867, 612);
             this.tabPageFunction_LMV.TabIndex = 4;
             this.tabPageFunction_LMV.Text = "Графики";
             this.tabPageFunction_LMV.UseVisualStyleBackColor = true;
@@ -993,8 +1068,26 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.panelGrafic_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrafic_LMV.Location = new System.Drawing.Point(3, 3);
             this.panelGrafic_LMV.Name = "panelGrafic_LMV";
-            this.panelGrafic_LMV.Size = new System.Drawing.Size(861, 605);
+            this.panelGrafic_LMV.Size = new System.Drawing.Size(861, 606);
             this.panelGrafic_LMV.TabIndex = 0;
+            // 
+            // chartFunction_LMV
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartFunction_LMV.ChartAreas.Add(chartArea2);
+            this.chartFunction_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chartFunction_LMV.Legends.Add(legend2);
+            this.chartFunction_LMV.Location = new System.Drawing.Point(0, 134);
+            this.chartFunction_LMV.Name = "chartFunction_LMV";
+            series2.ChartArea = "ChartArea1";
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartFunction_LMV.Series.Add(series2);
+            this.chartFunction_LMV.Size = new System.Drawing.Size(861, 472);
+            this.chartFunction_LMV.TabIndex = 1;
+            this.chartFunction_LMV.Text = "chart1";
             // 
             // groupBoxFunction_LMV
             // 
@@ -1009,37 +1102,6 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxFunction_LMV.TabStop = false;
             this.groupBoxFunction_LMV.Text = "Меню:";
             // 
-            // chartFunction_LMV
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chartFunction_LMV.ChartAreas.Add(chartArea3);
-            this.chartFunction_LMV.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chartFunction_LMV.Legends.Add(legend3);
-            this.chartFunction_LMV.Location = new System.Drawing.Point(0, 134);
-            this.chartFunction_LMV.Name = "chartFunction_LMV";
-            series3.ChartArea = "ChartArea1";
-            series3.IsVisibleInLegend = false;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartFunction_LMV.Series.Add(series3);
-            this.chartFunction_LMV.Size = new System.Drawing.Size(861, 471);
-            this.chartFunction_LMV.TabIndex = 1;
-            this.chartFunction_LMV.Text = "chart1";
-            // 
-            // comboBoxSelectColumn_LMV
-            // 
-            this.comboBoxSelectColumn_LMV.FormattingEnabled = true;
-            this.comboBoxSelectColumn_LMV.Items.AddRange(new object[] {
-            "Area",
-            "GGP",
-            "Population"});
-            this.comboBoxSelectColumn_LMV.Location = new System.Drawing.Point(6, 67);
-            this.comboBoxSelectColumn_LMV.Name = "comboBoxSelectColumn_LMV";
-            this.comboBoxSelectColumn_LMV.Size = new System.Drawing.Size(147, 27);
-            this.comboBoxSelectColumn_LMV.TabIndex = 0;
-            this.comboBoxSelectColumn_LMV.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectColumn_LMV_SelectedIndexChanged);
-            // 
             // labelSelectColumn_LMV
             // 
             this.labelSelectColumn_LMV.AutoSize = true;
@@ -1049,83 +1111,31 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.labelSelectColumn_LMV.TabIndex = 2;
             this.labelSelectColumn_LMV.Text = "Вывести:";
             // 
-            // groupBoxCalculate_LMV
+            // comboBoxSelectColumn_LMV
             // 
-            this.groupBoxCalculate_LMV.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.groupBoxCalculate_LMV.Controls.Add(this.labelDensity_LMV);
-            this.groupBoxCalculate_LMV.Controls.Add(this.labelGDPPer_LMV);
-            this.groupBoxCalculate_LMV.Controls.Add(this.buttonGDP_LMV);
-            this.groupBoxCalculate_LMV.Controls.Add(this.buttonDensity_LMV);
-            this.groupBoxCalculate_LMV.Controls.Add(this.textBoxDensity_LMV);
-            this.groupBoxCalculate_LMV.Controls.Add(this.textBoxGDP_LMV);
-            this.groupBoxCalculate_LMV.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBoxCalculate_LMV.Location = new System.Drawing.Point(480, 23);
-            this.groupBoxCalculate_LMV.Name = "groupBoxCalculate_LMV";
-            this.groupBoxCalculate_LMV.Size = new System.Drawing.Size(378, 90);
-            this.groupBoxCalculate_LMV.TabIndex = 4;
-            this.groupBoxCalculate_LMV.TabStop = false;
-            this.groupBoxCalculate_LMV.Text = "Посчитать:";
+            this.comboBoxSelectColumn_LMV.FormattingEnabled = true;
+            this.comboBoxSelectColumn_LMV.Items.AddRange(new object[] {
+            "Area",
+            "GGP",
+            "Population"});
+            this.comboBoxSelectColumn_LMV.Location = new System.Drawing.Point(6, 68);
+            this.comboBoxSelectColumn_LMV.Name = "comboBoxSelectColumn_LMV";
+            this.comboBoxSelectColumn_LMV.Size = new System.Drawing.Size(146, 27);
+            this.comboBoxSelectColumn_LMV.TabIndex = 0;
+            this.comboBoxSelectColumn_LMV.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectColumn_LMV_SelectedIndexChanged);
             // 
-            // textBoxGDP_LMV
+            // countriesTableAdapter
             // 
-            this.textBoxGDP_LMV.Location = new System.Drawing.Point(6, 45);
-            this.textBoxGDP_LMV.Name = "textBoxGDP_LMV";
-            this.textBoxGDP_LMV.Size = new System.Drawing.Size(113, 27);
-            this.textBoxGDP_LMV.TabIndex = 0;
-            // 
-            // textBoxDensity_LMV
-            // 
-            this.textBoxDensity_LMV.Location = new System.Drawing.Point(145, 45);
-            this.textBoxDensity_LMV.Name = "textBoxDensity_LMV";
-            this.textBoxDensity_LMV.Size = new System.Drawing.Size(100, 27);
-            this.textBoxDensity_LMV.TabIndex = 1;
-            // 
-            // buttonDensity_LMV
-            // 
-            this.buttonDensity_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonDensity_LMV.Image")));
-            this.buttonDensity_LMV.Location = new System.Drawing.Point(317, 24);
-            this.buttonDensity_LMV.Name = "buttonDensity_LMV";
-            this.buttonDensity_LMV.Size = new System.Drawing.Size(60, 60);
-            this.buttonDensity_LMV.TabIndex = 2;
-            this.buttonDensity_LMV.UseVisualStyleBackColor = true;
-            this.buttonDensity_LMV.Click += new System.EventHandler(this.buttonDensity_LMV_Click);
-            // 
-            // buttonGDP_LMV
-            // 
-            this.buttonGDP_LMV.Image = ((System.Drawing.Image)(resources.GetObject("buttonGDP_LMV.Image")));
-            this.buttonGDP_LMV.Location = new System.Drawing.Point(251, 24);
-            this.buttonGDP_LMV.Name = "buttonGDP_LMV";
-            this.buttonGDP_LMV.Size = new System.Drawing.Size(60, 60);
-            this.buttonGDP_LMV.TabIndex = 3;
-            this.buttonGDP_LMV.UseVisualStyleBackColor = true;
-            this.buttonGDP_LMV.Click += new System.EventHandler(this.buttonGDP_LMV_Click);
-            // 
-            // labelGDPPer_LMV
-            // 
-            this.labelGDPPer_LMV.AutoSize = true;
-            this.labelGDPPer_LMV.Location = new System.Drawing.Point(6, 23);
-            this.labelGDPPer_LMV.Name = "labelGDPPer_LMV";
-            this.labelGDPPer_LMV.Size = new System.Drawing.Size(113, 19);
-            this.labelGDPPer_LMV.TabIndex = 4;
-            this.labelGDPPer_LMV.Text = "ВВП на душу:";
-            // 
-            // labelDensity_LMV
-            // 
-            this.labelDensity_LMV.AutoSize = true;
-            this.labelDensity_LMV.Location = new System.Drawing.Point(148, 23);
-            this.labelDensity_LMV.Name = "labelDensity_LMV";
-            this.labelDensity_LMV.Size = new System.Drawing.Size(97, 19);
-            this.labelDensity_LMV.TabIndex = 5;
-            this.labelDensity_LMV.Text = "Плотность:";
+            this.countriesTableAdapter.ClearBeforeFill = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 644);
+            this.ClientSize = new System.Drawing.Size(878, 645);
             this.Controls.Add(this.panelFull_LMV);
             this.Controls.Add(this.splitter1);
-            this.MinimumSize = new System.Drawing.Size(900, 700);
+            this.MinimumSize = new System.Drawing.Size(900, 701);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "География";
@@ -1160,6 +1170,8 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInfo_LMV)).EndInit();
             this.panelTop_LMV.ResumeLayout(false);
             this.groupBoxMenu_LMV.ResumeLayout(false);
+            this.groupBoxCalculate_LMV.ResumeLayout(false);
+            this.groupBoxCalculate_LMV.PerformLayout();
             this.groupBoxSearch_LMV.ResumeLayout(false);
             this.groupBoxSearch_LMV.PerformLayout();
             this.tabPageCountries.ResumeLayout(false);
@@ -1170,11 +1182,9 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             this.groupBoxTables_LMV.PerformLayout();
             this.tabPageFunction_LMV.ResumeLayout(false);
             this.panelGrafic_LMV.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartFunction_LMV)).EndInit();
             this.groupBoxFunction_LMV.ResumeLayout(false);
             this.groupBoxFunction_LMV.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartFunction_LMV)).EndInit();
-            this.groupBoxCalculate_LMV.ResumeLayout(false);
-            this.groupBoxCalculate_LMV.PerformLayout();
             this.ResumeLayout(false);
 
         }
