@@ -65,7 +65,7 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
             }
             else 
             {
-                
+
                 string data = $"{countryName};{capital};{area};{GDP};{currency};{population};{nationality};{language};{continent};{religion}";
                 string fileName = $"{countryName}.csv";
                 string filePath = Path.Combine("Countries", fileName);
@@ -239,7 +239,6 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseCDataSet.Countries' table. You can move, or remove it, as needed.
             this.countriesTableAdapter.Fill(this.databaseCDataSet.Countries);
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CountryList"].ConnectionString);
             sqlConnection.Open();
@@ -328,6 +327,63 @@ namespace Tyuiu.LoginovMV.Sprint7.Project.V13
                 double columnValue = Convert.ToDouble(row[columnName]);
 
                 chartFunction_LMV.Series["Series1"].Points.AddXY(countryName, columnValue);
+            }
+        }
+
+        private void buttonAddCountryInBase_LMV_Click(object sender, EventArgs e)
+        {
+            openFileDialogTask_LMV.ShowDialog();
+            string openFilePath = openFileDialogTask_LMV.FileName;
+            var encoding = Encoding.GetEncoding("UTF-8"); 
+            var lines = File.ReadAllLines(openFilePath, encoding);
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CountryList"].ConnectionString))
+            {
+                connection.Open();
+
+                foreach (var line in lines)
+                {
+                    var values = line.Split(';');
+
+                    if (values.Length == 10) 
+                    {
+                        string countryName = values[0];
+                        string capital = values[1];
+                        int area = int.Parse(values[2]);
+                        int ggp = int.Parse(values[3]);
+                        string currency = values[4];
+                        int population = int.Parse(values[5]);
+                        string nationality = values[6];
+                        string language = values[7];
+                        string continent = values[8];
+                        string religion = values[9];
+
+                        string query = $"INSERT INTO Countries (CountryName, Capital, Area, GGP, Population, Currency, Nation, Language, Continent, Religion) VALUES " +
+                            $"(N'{countryName}', N'{capital}', '{area}', '{ggp}', N'{population}', N'{currency}', N'{nationality}', N'{language}', N'{continent}', N'{religion}')";
+
+                        SqlCommand command = new SqlCommand(query, connection);
+
+                        command.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void buttonDeleteCountryBase_LMV_Click(object sender, EventArgs e)
+        {
+            openFileDialogTask_LMV.ShowDialog();
+            string openFilePath = Path.GetFileNameWithoutExtension(openFileDialogTask_LMV.FileName);
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CountryList"].ConnectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Countries WHERE CountryName = @FileName";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@FileName", openFilePath);
+                command.ExecuteNonQuery();
             }
         }
     }
